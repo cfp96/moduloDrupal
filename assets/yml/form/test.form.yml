@@ -1,0 +1,39 @@
+nombre:
+  '#type': 'textfield'
+  '#title': 'nombre'
+  '#required': 'true'
+  '#pattern': '^[a-zA-Z0-9]+$'
+
+identificacion:
+  '#type': 'textfield'
+  '#title': 'identificacion'
+  '#required': 'true'
+  '#pattern': '^[0-9]*$'
+
+fecha_de_nacimiento:
+  '#type': 'date'
+  '#title': 'Fecha de nacimiento'
+  '#description': 'Escriba la fecha de nacimiento'
+  '#required': 'true'
+
+cargo:
+  '#type': 'select'
+  '#title': 'Cargo'
+  '#required': 'true'
+  '#default_value': 'adiministrador'
+  '#options':
+    'administrador' : 'Administrador'
+    'webmaster' : 'Webmaster'
+    'desarrollador' : 'Desarrollador'
+  '#description': 'Seleccione un cargo'
+
+actions:
+  '#type': 'actions'
+  '#submit' :
+      '::submitForm'
+  submit:
+    '#type': 'submit'
+    '#value': 'Enviar'
+    '#attributes':
+      class:
+        - btn-primary

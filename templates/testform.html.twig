@@ -1,0 +1,43 @@
+<div id="validation-message" class="alert alert-danger {{ messages.validation_message ? '' : 'd-none' }}">
+	{% if messages.validation_message %}
+		{{ messages.validation_message }}
+	{% endif %}
+</div>
+
+<div class="row">
+	<div class="col-md-6">
+		<div class="form-group">
+			{{ form.nombre }}
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="form-group">
+			{{ form.identificacion }}
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<div class="form-group">
+			{{ form.fecha_de_nacimiento }}
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="form-group">
+			{{ form.cargo }}
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="form-group">
+			{{ form.actions.submit  }}
+		</div>
+	</div>
+</div>
+
+{{ form.form_build_id }}
+{{ form.form_token }}
+{{ form.form_id }}
+

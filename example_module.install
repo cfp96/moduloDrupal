@@ -1,0 +1,83 @@
+<?php
+
+/**
+ * @file
+ * Module instalation.
+ */
+
+use Drupal\Core\Database\Database;
+
+/**
+ * Modyule installation.
+ */
+function example_module_install() {
+  // Crea la tabla personalizada en la base de datos al instalar el módulo.
+  example_module_create_table();
+}
+
+/**
+ * Module uninstall.
+ */
+function example_module_uninstall() {
+  example_module_drop_table();
+}
+
+function example_module_create_table() {
+  $connection = \Drupal::database();
+  $table_name = $connection->escapeTable('example_users');
+
+  if (!$connection->schema()->tableExists($table_name)) {
+    $table = [
+      'description' => 'Example users table',
+      'fields' => [
+        'id' => [
+          'type' => 'serial',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+        ],
+        'nombre' => [
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => TRUE,
+        ],
+        'identificacion' => [
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => TRUE,
+        ],
+        'fecha_de_nacimiento' => [
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => TRUE,
+        ],
+        'cargo' => [
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => TRUE,
+        ],
+        'estado' => [
+          'type' => 'int',
+          'not null' => TRUE,
+          'default' => 1,
+        ],
+      ],
+      'primary key' => ['id'],
+      'charset' => 'utf8mb4',
+      'collation' => 'utf8mb4_general_ci',
+    ];
+
+    $connection->schema()->createTable($table_name, $table);
+  }
+}
+
+/**
+ * Drop the table.
+ */
+function example_module_drop_table() {
+  $connection = \Drupal::database();
+  $table_name = $connection->escapeTable('example_users');
+
+  if ($connection->schema()->tableExists($table_name)) {
+    $connection->schema()->dropTable($table_name);
+  }
+}

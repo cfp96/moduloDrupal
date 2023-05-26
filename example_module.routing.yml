@@ -1,0 +1,7 @@
+example_module.test_form:
+  path: '/example-module/form'
+  defaults:
+    _form: '\Drupal\example_module\Form\TestForm'
+    _title: 'Example module form'
+  requirements:
+    _permission: 'access content'

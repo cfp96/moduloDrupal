@@ -1,0 +1,6 @@
+example_module.menu_link:
+  title: 'Formulario de creacion'
+  description: 'Formulario para la creacion de usuarios'
+  route_name: example_module.test_form
+  parent: main
+  weight: 0

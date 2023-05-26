@@ -1,0 +1,23 @@
+crud_module.show_data:
+  path: '/example-crud/data'
+  defaults:
+    _controller: '\Drupal\crud_module\Controller\DataController::showData'
+    _title: 'Informacion Usuarios'
+  requirements:
+    _permission: 'access content'
+
+crud_module.edit:
+  path: '/example-crud/edit/{id}'
+  defaults:
+    _form: '\Drupal\crud_module\Form\EditForm'
+    _title: 'Editar Usuario'
+  requirements:
+    _permission: 'access content'
+
+crud_module.delete:
+  path: '/example-crud/delete/{id}'
+  defaults:
+    _form: '\Drupal\crud_module\Form\DeleteForm'
+    _title: 'Eliminar Usuario'
+  requirements:
+    _permission: 'access content'

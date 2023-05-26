@@ -1,0 +1,6 @@
+crud_module.menu_link:
+  title: 'Gestion de usuarios'
+  description:  'Informacion Usaurios'
+  route_name: crud_module.show_data
+  parent: main
+  weight: 0
