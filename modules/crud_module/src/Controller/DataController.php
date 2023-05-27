@@ -22,7 +22,9 @@ class DataController extends ControllerBase {
    * Constructor del controlador.
    *
    * @param \Drupal\Core\Database\Connection $database
-   *   La conexión a la base de datos.
+   *  Drupal database conection.
+   * @param \Drupal\Core\Render\RendererInterface $renderer
+   *   Drupal renderer.
    */
   public function __construct(
     Connection $database,
@@ -38,7 +40,7 @@ class DataController extends ControllerBase {
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('database'),
-      $container->get('renderer')
+      $container->get('renderer'),
     );
   }
 
@@ -67,6 +69,8 @@ class DataController extends ControllerBase {
       'cargo'
     ]);
     $results = $query->execute()->fetchAll();
+
+    \Drupal::service('page_cache_kill_switch')->trigger();
 
     $rows = [];
     foreach ($results as $result) {
@@ -97,6 +101,7 @@ class DataController extends ControllerBase {
     ];
 
     return $data;
+
   }
 
 }
